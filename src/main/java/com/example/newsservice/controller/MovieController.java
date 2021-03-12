@@ -16,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/movies")
@@ -60,12 +61,7 @@ public class MovieController {
     @GetMapping(value = "/export/excel")
     public void exportToExcel(HttpServletResponse response) throws IOException {
         Movie movie = movieService.callMovieApi(restTemplate, "150", apiKey);
-        RuleSet ruleSet = NewsService.get();
-        String sheetName;
         ExcelExporter excelExporter = new ExcelExporter(movie);
-
-
-
         excelExporter.export(response);
 
     }

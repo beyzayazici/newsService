@@ -10,9 +10,10 @@ import java.util.List;
 @Service
 public class NewsService {
 
-    public static RuleSet get()
+    public List<RuleSet> getRuleSet()
     {
-        RuleSet rules=Helper.readFile();
+        List<RuleSet> rules=Helper.readFile();
+
 
         return rules;
     }

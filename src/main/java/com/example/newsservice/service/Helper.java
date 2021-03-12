@@ -13,25 +13,29 @@ import java.util.List;
 
 public class Helper {
 
-    public static RuleSet readFile() {
-        String  fileName = "/Users/beyzayazici/Desktop/NewsProject/DataSet.json";
+    public static List<RuleSet> readFile() {
+
+        String  fileName = "DataSet.json";
         try {
             String jsonString=new String(Files.readAllBytes(Paths.get(fileName)));
-            Gson gson=new Gson();
-            RuleSet ruleSet = gson.fromJson(jsonString,RuleSet.class);
-            List<Rule> rules =ruleSet.getRule();
-            for(Rule rule:rules){
-                List<Condition> conditions=rule.getCondition();
-                for(Condition condition:conditions){
-                    if (condition.getValue() != null) {
-                        condition.setValues(Arrays.asList(condition.getValue().split(",")));
+            List<RuleSet> ruleSets = JsonMapper.readList(jsonString, RuleSet.class);
+
+            for(RuleSet ruleSet: ruleSets) {
+                List<Rule> rules = ruleSet.getRule();
+                for(Rule rule:rules){
+                    List<Condition> conditions=rule.getCondition();
+                    for(Condition condition:conditions){
+                        if (condition.getValue() != null) {
+                            condition.setValues(Arrays.asList(condition.getValue().split(",")));
+                        }
                     }
                 }
             }
 
-        return ruleSet;
+        return ruleSets;
 
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
         return null;
