@@ -1,2 +1,1 @@
-# newsService
-News Service
+# news-service

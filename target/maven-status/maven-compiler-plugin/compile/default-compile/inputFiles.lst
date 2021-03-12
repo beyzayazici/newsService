@@ -1,0 +1,15 @@
+/Users/beyzayazici/Desktop/Beyza/newsService/src/main/java/com/example/newsservice/NewsServiceApplication.java
+/Users/beyzayazici/Desktop/Beyza/newsService/src/main/java/com/example/newsservice/service/MovieService.java
+/Users/beyzayazici/Desktop/Beyza/newsService/src/main/java/com/example/newsservice/service/Helper.java
+/Users/beyzayazici/Desktop/Beyza/newsService/src/main/java/com/example/newsservice/model/Rule.java
+/Users/beyzayazici/Desktop/Beyza/newsService/src/main/java/com/example/newsservice/model/Condition.java
+/Users/beyzayazici/Desktop/Beyza/newsService/src/main/java/com/example/newsservice/controller/NewsController.java
+/Users/beyzayazici/Desktop/Beyza/newsService/src/main/java/com/example/newsservice/service/NewsService.java
+/Users/beyzayazici/Desktop/Beyza/newsService/src/main/java/com/example/newsservice/model/News.java
+/Users/beyzayazici/Desktop/Beyza/newsService/src/main/java/com/example/newsservice/model/MovieResult.java
+/Users/beyzayazici/Desktop/Beyza/newsService/src/main/java/com/example/newsservice/controller/MovieController.java
+/Users/beyzayazici/Desktop/Beyza/newsService/src/main/java/com/example/newsservice/model/MovieGenre.java
+/Users/beyzayazici/Desktop/Beyza/newsService/src/main/java/com/example/newsservice/ExcelExporter.java
+/Users/beyzayazici/Desktop/Beyza/newsService/src/main/java/com/example/newsservice/model/RuleSet.java
+/Users/beyzayazici/Desktop/Beyza/newsService/src/main/java/com/example/newsservice/configuration/SwaggerConfig.java
+/Users/beyzayazici/Desktop/Beyza/newsService/src/main/java/com/example/newsservice/model/Movie.java
