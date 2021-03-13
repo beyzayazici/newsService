@@ -15,7 +15,7 @@ public class Helper {
 
     public static List<RuleSet> readFile() {
 
-        String  fileName = "DataSet.json";
+        String  fileName = "RuleSet.json";
         try {
             String jsonString=new String(Files.readAllBytes(Paths.get(fileName)));
             List<RuleSet> ruleSets = JsonMapper.readList(jsonString, RuleSet.class);

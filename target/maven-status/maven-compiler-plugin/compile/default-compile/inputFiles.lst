@@ -9,6 +9,7 @@
 /Users/beyzayazici/Desktop/Beyza/newsService/src/main/java/com/example/newsservice/model/MovieResult.java
 /Users/beyzayazici/Desktop/Beyza/newsService/src/main/java/com/example/newsservice/controller/MovieController.java
 /Users/beyzayazici/Desktop/Beyza/newsService/src/main/java/com/example/newsservice/model/MovieGenre.java
+/Users/beyzayazici/Desktop/Beyza/newsService/src/main/java/com/example/newsservice/service/JsonMapper.java
 /Users/beyzayazici/Desktop/Beyza/newsService/src/main/java/com/example/newsservice/ExcelExporter.java
 /Users/beyzayazici/Desktop/Beyza/newsService/src/main/java/com/example/newsservice/model/RuleSet.java
 /Users/beyzayazici/Desktop/Beyza/newsService/src/main/java/com/example/newsservice/configuration/SwaggerConfig.java

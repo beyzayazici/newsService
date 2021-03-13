@@ -29,7 +29,7 @@ public class MovieController {
 
     @Value("${api.key}")
     private String apiKey;
-
+/*
     @GetMapping("/{movieId}")
     public ResponseEntity<Movie> getMovieInfo(@PathVariable("movieId") String movieId)
     {
@@ -65,6 +65,10 @@ public class MovieController {
         excelExporter.export(response);
 
     }
+
+ */
+
+
 
 
 
