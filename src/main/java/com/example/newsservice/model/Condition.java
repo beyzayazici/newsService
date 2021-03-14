@@ -1,6 +1,5 @@
 package com.example.newsservice.model;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Condition {

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 
@@ -31,8 +32,8 @@ public class NewsService {
     private List<News> mockData() {
         List<News> news = new ArrayList();
 
-        News news1 = new News(1, "www.atv.com.tr", "Covid", "TR", "Özel", "#news", "sağlık", "Corona Virüs", "Dünya Sağlık Örgütü", "Duyuru", "11.03.2020", "11.03.2020","11.03.2020");
-        News news2 = new News(2, "www.atv1.com.tr", "Covid", "TR", "Özel", "#news", "sağlık", "Corona", "Corona Virüse karşı önlemler", "Corona", "11.03.2020", "11.03.2020","11.03.2020");
+        News news1 = new News(1, "www.atv.com.tr", "Covid", "TR", "Özel", "#news", "sağlık", "CoRo04na Virüs1# ama", "Dünya Sağlık 'Örgütü'", " Du54yuru ", "11.03.2020", "11.03.2020","11.03.2020");
+        News news2 = new News(2, "www.atv1.com.tr", "Covid", "TR", "Özel", "#news", "sağlık", " C23orona+  belki4.    ", "Corona Virüse karşı %önlemler", "Cor2ona ", "11.03.2020", "11.03.2020","11.03.2020");
         news.add(news1);
         news.add(news2);
 

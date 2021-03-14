@@ -1,5 +1,14 @@
 package com.example.newsservice.model;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Locale;
+import java.util.Scanner;
+
 public class News {
     private long id;
     private String url;
@@ -31,7 +40,7 @@ public class News {
         this.crawl_Date = crawl_Date;
         this.modified_Date = modified_Date;
         this.publishedDate = publishedDate;
-        this.text = setText();
+        setText();
     }
 
     public long getId() {
@@ -94,7 +103,53 @@ public class News {
         return rules;
     }
 
-    public String setText() {
-        return this.title + this.description + this.content;
+    public void setText() {
+        this.text = normalizedString();
+    }
+
+    private String normalizedString() {
+        String title = removeStopWords(removeNumbersOfString(removePunctuationMarks(this.title.trim())));
+        String description = removeStopWords(removeNumbersOfString(removePunctuationMarks(this.description.trim())));
+        String context = removeStopWords(removeNumbersOfString(removePunctuationMarks(this.content.trim())));
+
+        return (title + ", " + description + ", " + context).toLowerCase();
+    }
+
+    private String removeStopWords(String text) {
+        String pathName = "src//main//resources//" + this.lang.toUpperCase() + "_Stop_Words.txt";
+
+        File file = new File(pathName);
+
+        if(file.exists() && !file.isDirectory()) {
+            try {
+                List<String> stopwords = Files.readAllLines(Paths.get(pathName));
+                StringBuilder builder = new StringBuilder();
+                String[] allWords = text.split(" ");
+                for(String word : allWords) {
+                    if(!stopwords.contains(word)) {
+                        builder.append(word);
+                        builder.append(' ');
+                    }
+                }
+                return builder.toString();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return text;
+    }
+
+    private String removeOfString(String text, String regex) {
+        return text.replaceAll(regex, "");
+    }
+
+    private String removeNumbersOfString(String text) {
+        return removeOfString(text,"[0-9]");
+    }
+
+    private String removePunctuationMarks(String text) {
+        return removeOfString(text,"\\p{Punct}");
     }
 }

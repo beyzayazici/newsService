@@ -1,0 +1,82 @@
+[{
+   "name":"Dünya Sağlık Örgütü Duyuruları",
+   "rule":[
+      {
+         "ruleName":"Korona Virüs Dünya Sağlık Örgütü Duyuru",
+         "condition":[
+            {
+               "key" :"keywords",
+               "value":"Corona Virüs, Dünya Sağlık Örgütü, Duyuru"
+            },
+            {
+               "key" :"tags",
+               "value":"news"
+               
+            }, 
+            {
+               "key" :"categories",
+               "value":"Sağlık, Yaşam"
+            }
+         ]
+      },
+      {
+         "ruleName":"Dünya Sağlık Örgütü ve Soumya Swaminathan",
+         "condition":[
+            {
+               "key" :"keywords",
+               "value":"Dünya Sağlık Örgütü, Soumya Swaminathan"
+            },
+            {
+               "key" :"tags",
+               "value":"news"
+            },
+            {
+               "key" :"name",
+               "value":"F5 HABER"
+            }
+            
+         ]
+      }
+   ]
+},
+{
+   "name":"Dünya Ekonomi Bilgisi Duyuruları",
+   "rule":[
+      {
+         "ruleName":"Korona Virüs Dünya Sağlık Örgütü Duyuru",
+         "condition":[
+            {
+               "key" :"keywords",
+               "value":"Corona Virüs, Dünya Sağlık Örgütü, Duyuru"
+            },
+            {
+               "key" :"tags",
+               "value":"news"
+               
+            }, 
+            {
+               "key" :"categories",
+               "value":"Sağlık, Yaşam"
+            }
+         ]
+      },
+      {
+         "ruleName":"Dünya Sağlık Örgütü ve Soumya Swaminathan",
+         "condition":[
+            {
+               "key" :"keywords",
+               "value":"Dünya Sağlık Örgütü, Soumya Swaminathan"
+            },
+            {
+               "key" :"tags",
+               "value":"news"
+            },
+            {
+               "key" :"name",
+               "value":"F5 HABER"
+            }
+            
+         ]
+      }
+   ]
+}]
