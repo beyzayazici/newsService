@@ -5,13 +5,12 @@
          "ruleName":"Korona Virüs Dünya Sağlık Örgütü Duyuru",
          "condition":[
             {
-               "key" :"keywords",
+               "key" :"text",
                "value":"Corona Virüs, Dünya Sağlık Örgütü, Duyuru"
             },
             {
                "key" :"tags",
                "value":"news"
-               
             }, 
             {
                "key" :"categories",
@@ -23,7 +22,7 @@
          "ruleName":"Dünya Sağlık Örgütü ve Soumya Swaminathan",
          "condition":[
             {
-               "key" :"keywords",
+               "key" :"text",
                "value":"Dünya Sağlık Örgütü, Soumya Swaminathan"
             },
             {
@@ -34,46 +33,44 @@
                "key" :"name",
                "value":"F5 HABER"
             }
-            
          ]
       }
    ]
 },
 {
-   "name":"Dünya Ekonomi Bilgisi Duyuruları",
+   "name":"Dünya Eğitim Bilgisi Duyuruları",
    "rule":[
       {
-         "ruleName":"Korona Virüs Dünya Sağlık Örgütü Duyuru",
+         "ruleName":"Eğitim Duyuruları",
          "condition":[
             {
-               "key" :"keywords",
-               "value":"Corona Virüs, Dünya Sağlık Örgütü, Duyuru"
+               "key" :"text",
+               "value":"Eğitim, Öğretim, Milli Eğitim Bakanlığı"
             },
             {
-               "key" :"tags",
-               "value":"news"
-               
+               "key" :"language",
+               "value":"tr, en"
             }, 
             {
-               "key" :"categories",
-               "value":"Sağlık, Yaşam"
+               "key" :"type",
+               "value":"National, Regional"
             }
          ]
       },
       {
-         "ruleName":"Dünya Sağlık Örgütü ve Soumya Swaminathan",
+         "ruleName":"Türkiye Eğitim Duyuruları",
          "condition":[
             {
-               "key" :"keywords",
-               "value":"Dünya Sağlık Örgütü, Soumya Swaminathan"
+               "key" :"text",
+               "value":"Eğitim, Öğretim, Sınav"
             },
             {
                "key" :"tags",
-               "value":"news"
+               "value":"Video"
             },
             {
-               "key" :"name",
-               "value":"F5 HABER"
+               "key" :"categories",
+               "value":"Eğitim, Yaşam"
             }
             
          ]

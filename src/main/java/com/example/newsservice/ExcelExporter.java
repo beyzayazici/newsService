@@ -1,6 +1,7 @@
 package com.example.newsservice;
 
 import com.example.newsservice.model.News;
+import com.example.newsservice.service.Helper;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
@@ -50,8 +51,7 @@ public class ExcelExporter {
         createCell(row, 10, "CrawlDate", style);
         createCell(row, 11, "ModifiedDate", style);
         createCell(row, 12, "PublishedDate", style);
-        createCell(row, 13, "Text", style);
-        createCell(row, 14, "Rules", style);
+        createCell(row,13,"Rules", style);
     }
 
     private void createCell(Row row, int columnCount, Object value, CellStyle style) {
@@ -87,15 +87,14 @@ public class ExcelExporter {
         createCell(row, columnCount++, news.getName(), style);
         createCell(row, columnCount++, news.getLang(), style);
         createCell(row, columnCount++, news.getType(), style);
-        createCell(row, columnCount++, news.getTags(), style);
-        createCell(row, columnCount++, news.getCategories(), style);
+        createCell(row, columnCount++, Helper.convertListToString(news.getTags()), style);
+        createCell(row, columnCount++, Helper.convertListToString(news.getCategories()), style);
         createCell(row, columnCount++, news.getTitle(), style);
         createCell(row, columnCount++, news.getDescription(), style);
         createCell(row, columnCount++, news.getContent(), style);
-        createCell(row, columnCount++, news.getCrawl_Date(), style);
-        createCell(row, columnCount++, news.getModified_Date(), style);
-        createCell(row, columnCount++, news.getPublishedDate(), style);
-        createCell(row, columnCount++, news.getText(), style);
+        createCell(row, columnCount++, news.getCrawl_date(), style);
+        createCell(row, columnCount++, news.getModified_date(), style);
+        createCell(row, columnCount++, news.getPublished_date(), style);
         createCell(row, columnCount++, news.getRules(), style);
         }
 

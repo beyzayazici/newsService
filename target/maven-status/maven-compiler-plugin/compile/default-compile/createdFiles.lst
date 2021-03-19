@@ -1,16 +1,11 @@
 com/example/newsservice/model/Condition.class
-com/example/newsservice/model/Movie.class
-com/example/newsservice/model/MovieResult.class
 com/example/newsservice/model/Rule.class
 com/example/newsservice/ExcelExporter.class
 com/example/newsservice/configuration/SwaggerConfig.class
-com/example/newsservice/controller/MovieController.class
 com/example/newsservice/service/NewsService.class
 com/example/newsservice/model/RuleSet.class
-com/example/newsservice/model/MovieGenre.class
 com/example/newsservice/NewsServiceApplication.class
 com/example/newsservice/service/JsonMapper.class
 com/example/newsservice/controller/NewsController.class
-com/example/newsservice/service/MovieService.class
 com/example/newsservice/service/Helper.class
 com/example/newsservice/model/News.class

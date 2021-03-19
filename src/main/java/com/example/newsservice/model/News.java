@@ -1,32 +1,28 @@
 package com.example.newsservice.model;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
 
 public class News {
-    private long id;
+    private String id;
     private String url;
     private String name;
     private String lang;
     private String type;
-    private String tags;
-    private String categories;
+    private List<String> tags;
+    private List<String> categories;
     private String title;
     private String description;
     private String content;
-    private String crawl_Date;
-    private String  modified_Date;
-    private String publishedDate;
-    private String text;
+    private String crawl_date;
+    private String published_date;
+    private String modified_date;
     private String rules;
 
-    public News(long id, String url, String name, String lang, String type, String tags, String categories, String title, String description, String content, String crawl_Date, String modified_Date, String publishedDate) {
+    public News() {
+
+    }
+
+    public News(String id, String url, String name, String lang, String type, List<String> tags, List<String> categories, String title, String description, String content, String crawl_date, String published_date, String modified_date) {
         this.id = id;
         this.url = url;
         this.name = name;
@@ -37,38 +33,26 @@ public class News {
         this.title = title;
         this.description = description;
         this.content = content;
-        this.crawl_Date = crawl_Date;
-        this.modified_Date = modified_Date;
-        this.publishedDate = publishedDate;
-        setText();
+        this.crawl_date = crawl_date;
+        this.published_date = published_date;
+        this.modified_date = modified_date;
     }
 
-    public long getId() {
+    public String getRules() {
+        return rules;
+    }
+
+    public void setRules(String rules) {
+        this.rules = rules;
+    }
+
+
+    public String getId() {
         return id;
     }
 
     public String getUrl() {
         return url;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getLang() {
-        return lang;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public String getTags() {
-        return tags;
-    }
-
-    public String getCategories() {
-        return categories;
     }
 
     public String getTitle() {
@@ -83,73 +67,96 @@ public class News {
         return content;
     }
 
-    public String getCrawl_Date() {
-        return crawl_Date;
+    public String getName() {
+        return name;
     }
 
-    public String getModified_Date() {
-        return modified_Date;
+    public String getLang() {
+        return lang;
     }
 
-    public String getPublishedDate() {
-        return publishedDate;
+    public String getType() {
+        return type;
     }
 
-    public String getText() {
-        return text;
+    public List<String> getTags() {
+        return tags;
     }
 
-    public String getRules() {
-        return rules;
+    public List<String> getCategories() {
+        return categories;
     }
 
-    public void setText() {
-        this.text = normalizedString();
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    private String normalizedString() {
-        String title = removeStopWords(removeNumbersOfString(removePunctuationMarks(this.title.trim())));
-        String description = removeStopWords(removeNumbersOfString(removePunctuationMarks(this.description.trim())));
-        String context = removeStopWords(removeNumbersOfString(removePunctuationMarks(this.content.trim())));
-
-        return (title + ", " + description + ", " + context).toLowerCase();
+    public void setId(String id) {
+        this.id = id;
     }
 
-    private String removeStopWords(String text) {
-        String pathName = "src//main//resources//" + this.lang.toUpperCase() + "_Stop_Words.txt";
-
-        File file = new File(pathName);
-
-        if(file.exists() && !file.isDirectory()) {
-            try {
-                List<String> stopwords = Files.readAllLines(Paths.get(pathName));
-                StringBuilder builder = new StringBuilder();
-                String[] allWords = text.split(" ");
-                for(String word : allWords) {
-                    if(!stopwords.contains(word)) {
-                        builder.append(word);
-                        builder.append(' ');
-                    }
-                }
-                return builder.toString();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return text;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    private String removeOfString(String text, String regex) {
-        return text.replaceAll(regex, "");
+    public void setName(String name) {
+        this.name = name;
     }
 
-    private String removeNumbersOfString(String text) {
-        return removeOfString(text,"[0-9]");
+    public void setLang(String lang) {
+        this.lang = lang;
     }
 
-    private String removePunctuationMarks(String text) {
-        return removeOfString(text,"\\p{Punct}");
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
+    }
+
+    public void setCategories(List<String> categories) {
+        this.categories = categories;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getCrawl_date() {
+        return crawl_date;
+    }
+
+    public void setCrawl_date(String crawl_date) {
+        this.crawl_date = crawl_date;
+    }
+
+    public String getPublished_date() {
+        return published_date;
+    }
+
+    public void setPublished_date(String published_date) {
+        this.published_date = published_date;
+    }
+
+    public String getModified_date() {
+        return modified_date;
+    }
+
+    public void setModified_date(String modified_date) {
+        this.modified_date = modified_date;
+    }
+
+    public boolean allMatchCondition(String text) {
+        return true;
+    }
+
+    public boolean anyMatchCondition(String text, String condition) {
+        return true;
     }
 }

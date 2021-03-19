@@ -6,7 +6,7 @@
          "condition":[
             {
                "key" :"keywords",
-               "value":"Corona Virüs, Dünya Sağlık Örgütü, Duyuru"
+               "value":"Sağlık Müdürlüğü, Sağlık Müdürü"
             },
             {
                "key" :"tags",
@@ -15,7 +15,7 @@
             }, 
             {
                "key" :"categories",
-               "value":"Sağlık, Yaşam"
+               "value":"Yaşam"
             }
          ]
       },
