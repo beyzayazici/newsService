@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.example.newsservice.NewsServiceTest" time="1.009" tests="8" errors="0" skipped="0" failures="2">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.example.newsservice.NewsServiceTest" time="1.368" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="idea.version" value="2020.3.2"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -57,20 +57,12 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase name="normalizationLowerCaseControl" classname="com.example.newsservice.NewsServiceTest" time="0.164"/>
-  <testcase name="ahoCorasickAlgorithmRuleControlWithRuleSet1" classname="com.example.newsservice.NewsServiceTest" time="0.65">
-    <failure message="expected:&lt;[2]&gt; but was:&lt;[1]&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: expected:<[2]> but was:<[1]>
-	at com.example.newsservice.NewsServiceTest.ahoCorasickAlgorithmRuleControlWithRuleSet1(NewsServiceTest.java:46)
-]]></failure>
-  </testcase>
-  <testcase name="normalizationStopWordsControl" classname="com.example.newsservice.NewsServiceTest" time="0.001"/>
-  <testcase name="ahoCorasickAlgorithmRuleControl" classname="com.example.newsservice.NewsServiceTest" time="0.04">
-    <failure message="expected:&lt;[2]&gt; but was:&lt;[1]&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: expected:<[2]> but was:<[1]>
-	at com.example.newsservice.NewsServiceTest.ahoCorasickAlgorithmRuleControl(NewsServiceTest.java:39)
-]]></failure>
-  </testcase>
+  <testcase name="normalizationLowerCaseControl" classname="com.example.newsservice.NewsServiceTest" time="0.185"/>
+  <testcase name="ahoCorasickAlgorithmRuleControlWithRuleSet1" classname="com.example.newsservice.NewsServiceTest" time="0.891"/>
+  <testcase name="normalizationStopWordsControl" classname="com.example.newsservice.NewsServiceTest" time="0.004"/>
+  <testcase name="ahoCorasickAlgorithmRuleControl" classname="com.example.newsservice.NewsServiceTest" time="0.056"/>
   <testcase name="normalizationLowerCaseENControl" classname="com.example.newsservice.NewsServiceTest" time="0.001"/>
   <testcase name="normalizationNumbersControl" classname="com.example.newsservice.NewsServiceTest" time="0.001"/>
-  <testcase name="ahoCorasickAlgorithmControl" classname="com.example.newsservice.NewsServiceTest" time="0.009"/>
+  <testcase name="ahoCorasickAlgorithmControl" classname="com.example.newsservice.NewsServiceTest" time="0.007"/>
   <testcase name="normalizationPunctuationControl" classname="com.example.newsservice.NewsServiceTest" time="0.001"/>
 </testsuite>

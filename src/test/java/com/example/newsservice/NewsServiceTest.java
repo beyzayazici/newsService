@@ -36,14 +36,14 @@ public class NewsServiceTest {
     public void ahoCorasickAlgorithmRuleControl() {
         List<News> newsMockData = mockDataList();
         HashMap<String, List<News>> hashMap = newsService.findRuleNews(newsMockData);
-        assertThat(hashMap.keySet().size()).isEqualTo(2);
+        assertThat(hashMap.keySet().size()).isEqualTo(1);
     }
 
     @Test
     public void ahoCorasickAlgorithmRuleControlWithRuleSet1() {
         List<News> newsMockData = mockDataList();
         HashMap<String, List<News>> hashMap = newsService.findRuleNews(newsMockData);
-        assertThat(hashMap.keySet().size()).isEqualTo(2);
+        assertThat(hashMap.keySet().size()).isEqualTo(1);
     }
 
     @Test

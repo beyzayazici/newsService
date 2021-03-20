@@ -1,12 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.example.newsservice.NewsServiceTest
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 1.009 sec <<< FAILURE! - in com.example.newsservice.NewsServiceTest
-ahoCorasickAlgorithmRuleControlWithRuleSet1(com.example.newsservice.NewsServiceTest)  Time elapsed: 0.65 sec  <<< FAILURE!
-org.junit.ComparisonFailure: expected:<[2]> but was:<[1]>
-	at com.example.newsservice.NewsServiceTest.ahoCorasickAlgorithmRuleControlWithRuleSet1(NewsServiceTest.java:46)
-
-ahoCorasickAlgorithmRuleControl(com.example.newsservice.NewsServiceTest)  Time elapsed: 0.04 sec  <<< FAILURE!
-org.junit.ComparisonFailure: expected:<[2]> but was:<[1]>
-	at com.example.newsservice.NewsServiceTest.ahoCorasickAlgorithmRuleControl(NewsServiceTest.java:39)
-
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.368 sec - in com.example.newsservice.NewsServiceTest
