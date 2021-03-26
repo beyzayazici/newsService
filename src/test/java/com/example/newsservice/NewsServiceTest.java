@@ -12,10 +12,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -36,24 +33,24 @@ public class NewsServiceTest {
     public void ahoCorasickAlgorithmRuleControl() {
         List<News> newsMockData = mockDataList();
         HashMap<String, List<News>> hashMap = newsService.findRuleNews(newsMockData);
-        assertThat(hashMap.keySet().size()).isEqualTo(1);
+        assertThat(hashMap.keySet().size()).isEqualTo(2);
     }
 
     @Test
-    public void ahoCorasickAlgorithmRuleControlWithRuleSet1() {
+    public void ahoCorasickAlgorithmRuleControlWithRuleSet() {
         List<News> newsMockData = mockDataList();
         HashMap<String, List<News>> hashMap = newsService.findRuleNews(newsMockData);
-        assertThat(hashMap.keySet().size()).isEqualTo(1);
+        assertThat(hashMap.keySet().size()).isEqualTo(2);
     }
 
     @Test
-    public void ahoCorasickAlgorithmControl() {
+    public void ahoCorasickAlgorithmControlWithConditionKeywords() {
         Condition condition = new Condition();
         List<String> listConditionValue = Arrays.asList("Sağlık Müdürlüğü", "Sağlık Müdürü", "haberine açıklama");
         condition.setKey("keywords");
         condition.setValues(listConditionValue);
         List<News> newsMockData = mockDataList();
-        assertThat(newsService.ahoCorasickAlgorithm(newsMockData.get(0), condition)).isEqualTo(true);
+        assertThat(newsService.ahoCorasickAlgorithm(newsMockData, condition, "Rule",true).size()).isEqualTo(1);
     }
 
     @Test
@@ -85,7 +82,6 @@ public class NewsServiceTest {
         String result = Helper.normalization("altmýþ İL bizden SAĞLIK ben MÜDÜRLÜĞÜ", "TR");
         assertThat(result).isEqualTo("il sağlık müdürlüğü");
     }
-
 
     private List<News> mockDataList() {
         List<News> news = new ArrayList();

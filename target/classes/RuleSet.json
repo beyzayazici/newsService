@@ -2,11 +2,11 @@
    "name":"Dünya Sağlık Örgütü Duyuruları",
    "rule":[
       {
-         "ruleName":"Korona Virüs Dünya Duyuruları",
+         "ruleName":"Korona Virüs Dünya Sağlık Örgütü Duyuru",
          "condition":[
             {
                "key" :"keywords",
-               "value":"Bangladeş, Yeni tip koronavirüs"
+               "value":"Corona Virüs, Dünya Sağlık Örgütü, Kayseri Ticaret Odası"
             },
             {
                "key" :"tags",
@@ -15,7 +15,7 @@
             },
             {
                "key" :"categories",
-               "value":"Dünya"
+               "value":"Ekonomi"
             }
          ]
       },

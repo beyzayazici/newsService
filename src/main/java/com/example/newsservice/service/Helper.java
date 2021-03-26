@@ -3,7 +3,6 @@ package com.example.newsservice.service;
 import com.example.newsservice.model.Condition;
 import com.example.newsservice.model.Rule;
 import com.example.newsservice.model.RuleSet;
-import com.google.gson.Gson;
 
 import java.io.File;
 import java.io.FileNotFoundException;

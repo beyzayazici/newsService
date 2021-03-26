@@ -51,7 +51,8 @@ public class ExcelExporter {
         createCell(row, 10, "CrawlDate", style);
         createCell(row, 11, "ModifiedDate", style);
         createCell(row, 12, "PublishedDate", style);
-        createCell(row,13,"Rules", style);
+        createCell(row,13,"Text", style);
+        createCell(row,14,"Rules", style);
     }
 
     private void createCell(Row row, int columnCount, Object value, CellStyle style) {
@@ -95,9 +96,9 @@ public class ExcelExporter {
         createCell(row, columnCount++, news.getCrawl_date(), style);
         createCell(row, columnCount++, news.getModified_date(), style);
         createCell(row, columnCount++, news.getPublished_date(), style);
+        createCell(row, columnCount++, news.getText(), style);
         createCell(row, columnCount++, news.getRules(), style);
         }
-
     }
 
     public String getFileName() {

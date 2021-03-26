@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.example.newsservice.NewsServiceTest" time="1.368" tests="8" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.example.newsservice.NewsServiceTest" time="1.7" tests="8" errors="0" skipped="0" failures="4">
   <properties>
     <property name="idea.version" value="2020.3.2"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -57,12 +57,28 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase name="normalizationLowerCaseControl" classname="com.example.newsservice.NewsServiceTest" time="0.185"/>
-  <testcase name="ahoCorasickAlgorithmRuleControlWithRuleSet1" classname="com.example.newsservice.NewsServiceTest" time="0.891"/>
-  <testcase name="normalizationStopWordsControl" classname="com.example.newsservice.NewsServiceTest" time="0.004"/>
-  <testcase name="ahoCorasickAlgorithmRuleControl" classname="com.example.newsservice.NewsServiceTest" time="0.056"/>
+  <testcase name="normalizationLowerCaseControl" classname="com.example.newsservice.NewsServiceTest" time="0.252"/>
+  <testcase name="ahoCorasickAlgorithmRuleControlWithRuleSet1" classname="com.example.newsservice.NewsServiceTest" time="1.116">
+    <failure message="expected:&lt;[1]&gt; but was:&lt;[2]&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: expected:<[1]> but was:<[2]>
+	at com.example.newsservice.NewsServiceTest.ahoCorasickAlgorithmRuleControlWithRuleSet1(NewsServiceTest.java:49)
+]]></failure>
+  </testcase>
+  <testcase name="normalizationStopWordsControl" classname="com.example.newsservice.NewsServiceTest" time="0"/>
+  <testcase name="ahoCorasickAlgorithmRuleControl" classname="com.example.newsservice.NewsServiceTest" time="0.042">
+    <failure message="expected:&lt;[1]&gt; but was:&lt;[2]&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: expected:<[1]> but was:<[2]>
+	at com.example.newsservice.NewsServiceTest.ahoCorasickAlgorithmRuleControl(NewsServiceTest.java:42)
+]]></failure>
+  </testcase>
   <testcase name="normalizationLowerCaseENControl" classname="com.example.newsservice.NewsServiceTest" time="0.001"/>
-  <testcase name="normalizationNumbersControl" classname="com.example.newsservice.NewsServiceTest" time="0.001"/>
-  <testcase name="ahoCorasickAlgorithmControl" classname="com.example.newsservice.NewsServiceTest" time="0.007"/>
-  <testcase name="normalizationPunctuationControl" classname="com.example.newsservice.NewsServiceTest" time="0.001"/>
+  <testcase name="normalizationNumbersControl" classname="com.example.newsservice.NewsServiceTest" time="0.002">
+    <failure message="expected:&lt;&quot;i[l sağlık müdürlü]ğü&quot;&gt; but was:&lt;&quot;i[  l  s ağ l ı k   mü d ü r l ü ]ğü&quot;&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: expected:<"i[l sağlık müdürlü]ğü"> but was:<"i[  l  s ağ l ı k   mü d ü r l ü ]ğü">
+	at com.example.newsservice.NewsServiceTest.normalizationNumbersControl(NewsServiceTest.java:77)
+]]></failure>
+  </testcase>
+  <testcase name="ahoCorasickAlgorithmControlWithConditionKeywords" classname="com.example.newsservice.NewsServiceTest" time="0.019"/>
+  <testcase name="normalizationPunctuationControl" classname="com.example.newsservice.NewsServiceTest" time="0.006">
+    <failure message="expected:&lt;&quot;i[l sağlık müdürlü]ğü&quot;&gt; but was:&lt;&quot;i[      l     sağl    ık  m    ü dü     rlü         ]ğü&quot;&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: expected:<"i[l sağlık müdürlü]ğü"> but was:<"i[      l     sağl    ık  m    ü dü     rlü         ]ğü">
+	at com.example.newsservice.NewsServiceTest.normalizationPunctuationControl(NewsServiceTest.java:83)
+]]></failure>
+  </testcase>
 </testsuite>

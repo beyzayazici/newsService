@@ -17,9 +17,9 @@ import java.util.*;
 @Service
 public class NewsService {
 
+    private final String CONDITION_NAME="keywords";
     public HashMap<String, List<News>> callNewsApi(HttpServletResponse response, RestTemplate restTemplate, int pageNo, int limit) throws IOException {
         String url = "http://mock.artiwise.com/api/news?_page=" + pageNo + "&_limit=" + limit;
-        //String url = "http://mock.artiwise.com/api/news";
         try {
             List<News> news = Arrays.asList(restTemplate.getForEntity(url, News[].class).getBody());
             ExcelExporter excelExporter = new ExcelExporter(findRuleNews(news));
@@ -38,26 +38,84 @@ public class NewsService {
     }
 
     public HashMap<String, List<News>> findRuleNews(List<News> news) {
-        List<RuleSet> rules = Helper.readFile();
+        //readFile methods map configuration file to Rule object.
+        //configuration file must be replaced with the actual configuration file.
+        List<RuleSet> ruleSets = Helper.readFile();
         HashMap<String, List<News>> results = new HashMap<>();
-        for (News n : news) {
-            for (RuleSet ruleSet : rules) {
-                if (isNewsRuleMatch(n, ruleSet)) {
-                    if (!results.containsKey(ruleSet.getName())) {
-                        List<News> keyNews = new ArrayList<>();
-                        keyNews.add(n);
-                        results.put(ruleSet.getName(), keyNews);
-                    } else {
-                        results.get(ruleSet.getName()).add(n);
-                    }
-                }
+
+            for (RuleSet ruleSet : ruleSets) {
+                results.put(ruleSet.getName(), isNewsRuleMatch(news, ruleSet));
             }
-        }
+
         return results;
     }
 
+    public List<News> isNewsRuleMatch(List<News> news, RuleSet ruleSet) {
+        Iterator<Condition> conditionIterator;
+        List<News> resultNews = new ArrayList<>();
+        List<News> ruleNews;
+        boolean isEndRuleOfCondition = false;
+        Condition nextCondition;
 
-    public String getNormalization(News news) {
+
+        for (Rule rule : ruleSet.getRule()) {
+            conditionIterator = rule.getCondition().iterator();
+            ruleNews = news;
+
+            while (conditionIterator.hasNext() && ruleNews.size() != 0) {
+                nextCondition = conditionIterator.next();
+                if(!conditionIterator.hasNext())
+                    isEndRuleOfCondition = true;
+                ruleNews = ahoCorasickAlgorithm(ruleNews, nextCondition, rule.getRuleName(), isEndRuleOfCondition);
+            }
+
+            resultNews.addAll(ruleNews);
+        }
+
+        return resultNews;
+    }
+
+    public List<News> ahoCorasickAlgorithm(List<News> news, Condition condition, String rule, boolean isEndRuleOfCondition) {
+        String text;
+        Collection<Emit> emits;
+        List<News> newsList = new ArrayList<>();
+
+        // apply all rules for every news in (isMatchAllCase and  isMatchAnyCase) methods
+        // int this method control for AND,OR rules of conditions.
+        Trie trie = Trie.builder()
+                //.onlyWholeWords()
+                .ignoreOverlaps()
+                .ignoreCase()
+                .addKeywords(condition.getValues())
+                .build();
+
+        for(News n : news) {
+            text = getValuesAsString(n, condition);
+            emits = trie.parseText(text);
+
+            if (condition.getKey().equals(CONDITION_NAME) && isMatchAllCase(condition, emits)) {
+                if(isEndRuleOfCondition)
+                    n.setRules(rule + ", ");
+                newsList.add(n);
+
+            } else if(isMatchAnyCase(condition, emits)){
+                if(isEndRuleOfCondition)
+                    n.setRules(rule + ", ");
+                newsList.add(n);
+            }
+        }
+
+        return newsList;
+    }
+
+    private boolean isMatchAnyCase(Condition condition, Collection<Emit> emits) {
+       if(!condition.getKey().equals(CONDITION_NAME) && !emits.isEmpty()){
+           return true;
+       }
+        return false;
+    }
+
+    public void getNormalization(News news) {
         String result = "";
 
         if (news.getDescription() != null) {
@@ -65,15 +123,14 @@ public class NewsService {
         } else {
             result = news.getTitle() + news.getContent();
         }
-
-        return Helper.normalization(result, news.getLang());
+        news.setText(Helper.normalization(result, news.getLang()));
     }
-
 
     private String getValuesAsString(News news, Condition condition) {
         switch (condition.getKey()) {
             case "keywords":
-                return getNormalization(news);
+                getNormalization(news);
+                return news.getText();
             case "lang":
                 return news.getLang();
             case "type":
@@ -85,28 +142,6 @@ public class NewsService {
             default:
                 return "";
         }
-
-    }
-
-    public boolean ahoCorasickAlgorithm(News news, Condition condition) {
-
-        Trie trie = Trie.builder()
-                .ignoreOverlaps() //search in the text anywhere
-                .ignoreCase()
-                .addKeywords(condition.getValues())
-                .build();
-
-        String text = getValuesAsString(news, condition);
-
-        Collection<Emit> emits = trie.parseText(text);
-
-        if (condition.getKey().equals("keywords")) {
-            return isMatchAllCase(condition, emits);
-
-        } else {
-            return isMatchAnyCase(emits);
-        }
-
     }
 
     private boolean isMatchAllCase(Condition condition, Collection<Emit> emits) {
@@ -117,36 +152,13 @@ public class NewsService {
             }
         }
         return true;
-
     }
 
-    private boolean isMatchAnyCase(Collection<Emit> emits) {
+    private boolean isMatchAnyCase(Condition condition, Collection<Emit> emits, News news) {
         if (!emits.isEmpty()) {
+            news.setRules(condition.getKey() + ",");
             return true;
         }
         return false;
-    }
-
-    public boolean isNewsRuleMatch(News news, RuleSet ruleSet) {
-        boolean isMatchCondition;
-        boolean isMatchRule = false;
-
-        for (Rule rule : ruleSet.getRule()) {
-            isMatchCondition = true;
-            Iterator<Condition> conditionIterator = rule.getCondition().iterator();
-            while (conditionIterator.hasNext() && isMatchCondition) {
-                isMatchCondition = ahoCorasickAlgorithm(news, conditionIterator.next());
-            }
-            if (isMatchCondition) {
-                if (news.getRules() != null) {
-                    news.setRules(news.getRules() + "," + ruleSet.getName());
-                } else {
-                    news.setRules(ruleSet.getName() + ",");
-                }
-                isMatchRule = true;
-            }
-
-        }
-        return isMatchRule;
     }
 }

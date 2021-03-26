@@ -16,6 +16,7 @@ public class News {
     private String crawl_date;
     private String published_date;
     private String modified_date;
+    private String text;
     private String rules;
 
     public News() {
@@ -45,7 +46,6 @@ public class News {
     public void setRules(String rules) {
         this.rules = rules;
     }
-
 
     public String getId() {
         return id;
@@ -87,6 +87,13 @@ public class News {
         return categories;
     }
 
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
 
     public void setTitle(String title) {
         this.title = title;
