@@ -6,7 +6,7 @@
          "condition":[
             {
                "key" :"keywords",
-               "value":"Corona Virüs, Dünya Sağlık Örgütü, Kayseri Ticaret Odası"
+               "value":"Corona Virüs,Dünya Sağlık Örgütü,Kayseri Ticaret Odası"
             },
             {
                "key" :"tags",
@@ -24,7 +24,7 @@
          "condition":[
             {
                "key" :"keywords",
-               "value":"Dünya Sağlık Örgütü, Soumya Swaminathan"
+               "value":"Dünya Sağlık Örgütü,Soumya Swaminathan"
             },
             {
                "key" :"tags",
@@ -47,7 +47,7 @@
             "condition":[
                {
                   "key" :"keywords",
-                  "value":"Sağlık Müdürlüğü, Sağlık Müdürü"
+                  "value":"Sağlık Müdürlüğü,Sağlık Müdürü"
                },
                {
                   "key" :"tags",
@@ -65,7 +65,7 @@
             "condition":[
                {
                   "key" :"keywords",
-                  "value":"Dünya Sağlık Örgütü, Soumya Swaminathan"
+                  "value":"Dünya Sağlık Örgütü,Soumya Swaminathan"
                },
                {
                   "key" :"tags",

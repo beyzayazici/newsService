@@ -46,11 +46,28 @@ public class NewsServiceTest {
     @Test
     public void ahoCorasickAlgorithmControlWithConditionKeywords() {
         Condition condition = new Condition();
-        List<String> listConditionValue = Arrays.asList("Sağlık Müdürlüğü", "Sağlık Müdürü", "haberine açıklama");
+        String listConditionValue = "Corona Virüs,Dünya Sağlık Örgütü,Kayseri Ticaret Odası";
         condition.setKey("keywords");
-        condition.setValues(listConditionValue);
+        condition.setValue(listConditionValue);
         List<News> newsMockData = mockDataList();
         assertThat(newsService.ahoCorasickAlgorithm(newsMockData, condition, "Rule",true).size()).isEqualTo(1);
+    }
+
+    @Test
+    public void ahoCorasickAlgorithmControlWithNormalization() {
+        List<News> newsMockData = mockDataList();
+        assertThat(newsService.findRuleNews(newsMockData).size()).isEqualTo(2);
+        assertThat(newsService.findRuleNews(newsMockData).containsKey("Dünya Sağlık Örgütü Duyuruları")).isTrue();
+        assertThat(newsService.findRuleNews(newsMockData).containsKey("Dünya Sağlık Bilgisi Duyuruları")).isTrue();
+    }
+
+    @Test
+    public void ahoCorasickAlgorithmControlWithAllMatchCase() {
+        List<News> newsMockData = mockDataList();
+        Condition c = new Condition();
+        c.setKey("keywords");
+        c.setValue("Corona Virüs,Dünya Sağlık Örgütü,Kayseri Ticaret Odası");
+        assertThat(newsService.ahoCorasickAlgorithm(newsMockData, c, "keywords control", true).size()).isEqualTo(1);
     }
 
     @Test
@@ -97,11 +114,6 @@ public class NewsServiceTest {
         news.add(news1);
         news.add(news2);
 
-        return news;
-    }
-
-    private News mockData() {
-        News news = new News();
         return news;
     }
 }

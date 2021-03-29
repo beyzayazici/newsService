@@ -10,15 +10,7 @@ public class Rule {
         return ruleName;
     }
 
-    public void setRuleName(String ruleName) {
-        this.ruleName = ruleName;
-    }
-
     public List<Condition> getCondition() {
         return condition;
-    }
-
-    public void setCondition(List<Condition> condition) {
-        this.condition = condition;
     }
 }

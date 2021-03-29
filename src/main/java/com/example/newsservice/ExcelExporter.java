@@ -14,15 +14,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
 public class ExcelExporter {
-    private XSSFWorkbook workbook;
+    private final XSSFWorkbook workbook;
     private XSSFSheet sheet;
-    private HashMap<String,List<News>> newsHashMap;
+    private final HashMap<String,List<News>> newsHashMap;
 
     public ExcelExporter(HashMap<String,List<News>> newsHashMap) {
         this.newsHashMap=newsHashMap;
@@ -97,7 +96,7 @@ public class ExcelExporter {
         createCell(row, columnCount++, news.getModified_date(), style);
         createCell(row, columnCount++, news.getPublished_date(), style);
         createCell(row, columnCount++, news.getText(), style);
-        createCell(row, columnCount++, news.getRules(), style);
+        createCell(row, columnCount, news.getRules(), style);
         }
     }
 
@@ -109,7 +108,7 @@ public class ExcelExporter {
 
     public void createSheetAndContent(HttpServletResponse response) throws IOException {
 
-        List<News> sheetNews=new ArrayList<>();
+        List<News> sheetNews;
         for (String s : newsHashMap.keySet()) {
             sheetNews = newsHashMap.get(s);
             sheet = workbook.createSheet(s);
@@ -125,10 +124,7 @@ public class ExcelExporter {
         response.setContentType("application/vnd.ms-excel; charset=UTF-8");
         response.setHeader(headerKey, headerValue);
 
-
-        FileOutputStream outputStream = null;
-
-        outputStream = new FileOutputStream(fileName);
+        FileOutputStream outputStream = new FileOutputStream(fileName);
         workbook.write(outputStream);
         workbook.close();
         outputStream.close();

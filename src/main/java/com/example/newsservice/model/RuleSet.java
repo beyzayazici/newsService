@@ -10,16 +10,7 @@ public class RuleSet {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public List<Rule> getRule() {
         return rule;
     }
-
-    public void setRule(List<Rule> rule) {
-        this.rule = rule;
-    }
-
 }

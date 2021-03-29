@@ -1,15 +1,11 @@
 package com.example.newsservice.service;
 
-import com.example.newsservice.model.Condition;
-import com.example.newsservice.model.Rule;
 import com.example.newsservice.model.RuleSet;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -20,21 +16,7 @@ public class Helper {
         String fileName = "src//main//resources//RuleSet.json";
         try {
             String jsonString = new String(Files.readAllBytes(Paths.get(fileName)));
-            List<RuleSet> ruleSets = JsonMapper.readList(jsonString, RuleSet.class);
-
-            for (RuleSet ruleSet : ruleSets) {
-                List<Rule> rules = ruleSet.getRule();
-                for (Rule rule : rules) {
-                    List<Condition> conditions = rule.getCondition();
-                    for (Condition condition : conditions) {
-                        if (condition.getValue() != null) {
-                            condition.setValues(Arrays.asList(condition.getValue().split(",")));
-                        }
-                    }
-                }
-            }
-
-            return ruleSets;
+            return JsonMapper.readList(jsonString, RuleSet.class);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -50,7 +32,7 @@ public class Helper {
         return text.replaceAll("\\p{Punct}", "");
     }
 
-    private static String removeNumbersOfString(String text) {
+    public static String removeNumbersOfString(String text) {
         return text.replaceAll("[0-9]", "");
     }
 
@@ -64,12 +46,16 @@ public class Helper {
             locale = Locale.forLanguageTag("en-EN");
         }
 
-        return removeSpecialMarks(removeStopWords(removeNumbersOfString(removePunctuationMarks(text)))).toLowerCase(locale).trim();
+        return removeSpecialMarks(removeStopWords(removeNumbersOfString(removePunctuationMarks(text)), lang)).toLowerCase(locale).trim();
 
     }
 
-    private static String removeStopWords(String text) {
+    private static String removeStopWords(String text, String lang) {
         String pathName = "src//main//resources//TR_Stop_Words.txt";
+
+        //adding if there is another language
+        if(lang.equals("EN"))
+            pathName = "src//main//resources//EN_Stop_Words.txt";
 
         File file = new File(pathName);
 
@@ -85,8 +71,6 @@ public class Helper {
                     }
                 }
                 return builder.toString();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -95,10 +79,9 @@ public class Helper {
     }
 
     public static String convertListToString(List<String> values) {
-        String newString = "";
-        for (String s : values)
-            newString = newString + " " + s;
-        return newString;
+        StringBuilder newString = new StringBuilder();
+        for (String value : values)
+            newString.append(value);
+        return newString.toString();
     }
-
 }

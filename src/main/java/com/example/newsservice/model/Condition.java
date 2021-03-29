@@ -1,12 +1,8 @@
 package com.example.newsservice.model;
 
-import java.util.List;
-
 public class Condition {
-
     private String key;
     private String value;
-    private List<String> values;
 
     public String getKey() {
         return key;
@@ -22,13 +18,5 @@ public class Condition {
 
     public void setValue(String value) {
         this.value = value;
-    }
-
-    public List<String> getValues() {
-        return values;
-    }
-
-    public void setValues(List<String> values) {
-        this.values = values;
     }
 }
